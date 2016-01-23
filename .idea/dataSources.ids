@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - webinar_library@localhost" uuid="3b578bf5-76e8-4da2-9617-4e938e71ed27">
+    <database-info product="MySQL" version="5.6.27-0ubuntu1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="webinar_library"/>
+    <table name="author" schema="" catalog="webinar_library" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="firstName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lastName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FKDE9FAAFB15BB0009" table="book_author_rel" schema="" catalog="webinar_library" columns="author_id"/>
+    </table>
+    <table name="book" schema="" catalog="webinar_library" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FKDE9FAAFB931ADB09" table="book_author_rel" schema="" catalog="webinar_library" columns="book_id"/>
+    </table>
+    <table name="book_author_rel" schema="" catalog="webinar_library" type="TABLE">
+      <column name="book_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="author_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="author_order" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="book_id,author_order"/>
+      <foreign-key name="FKDE9FAAFB15BB0009" columns="author_id" ref-table="author" ref-schema="" ref-catalog="webinar_library" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FKDE9FAAFB931ADB09" columns="book_id" ref-table="book" ref-schema="" ref-catalog="webinar_library" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FKDE9FAAFB15BB0009" unique="false" columns="author_id"/>
+      <index name="FKDE9FAAFB931ADB09" unique="false" columns="book_id"/>
+    </table>
+  </data-source>
+</component>
